@@ -1,43 +1,92 @@
-import { motion, useInView } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-export default function StatsCounter({ endValue, suffix = "", label, hasBorder }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+const stats = [
+  { prefix: '', num: 50, suffix: '+', label: 'Automations Built' },
+  { prefix: '', num: 12, suffix: '+', label: 'AI Agents Live' },
+  { prefix: '', num: 8, suffix: '', label: 'Countries Served' },
+  { prefix: '', num: 100, suffix: '%', label: 'Client Retention' }
+]
+
+function Digit({ value, isAnimating, delay }) {
+  return (
+    <div className="relative inline-block overflow-hidden h-[1.1em] leading-[1.1em]" style={{ perspective: '400px' }}>
+      <div 
+        className="transition-transform duration-1000 ease-out"
+        style={{
+          transform: isAnimating ? 'rotateX(0deg)' : 'rotateX(-90deg)',
+          transformOrigin: 'bottom',
+          transitionDelay: `${delay}ms`
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  )
+}
+
+function StatItem({ stat, index, inView }) {
+  const [current, setCurrent] = useState(0)
 
   useEffect(() => {
-    if (isInView) {
-      let startTime;
-      const duration = 1500;
+    if (!inView) return
+    let startTime
+    const duration = 1500
+    
+    const animate = (time) => {
+      if (!startTime) startTime = time
+      const progress = (time - startTime) / duration
       
-      const animate = (time) => {
-        if (!startTime) startTime = time;
-        const progress = Math.min((time - startTime) / duration, 1);
-        const easeOut = 1 - Math.pow(1 - progress, 3); // cubic easeOut
-        
-        setCount(Math.floor(easeOut * endValue));
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
+      if (progress < 1) {
+        const easeProgress = 1 - Math.pow(1 - progress, 4)
+        setCurrent(Math.floor(easeProgress * stat.num))
+        requestAnimationFrame(animate)
+      } else {
+        setCurrent(stat.num)
       }
-      
-      requestAnimationFrame(animate);
     }
-  }, [isInView, endValue])
+    
+    requestAnimationFrame(animate)
+  }, [inView, stat.num])
+
+  const digits = current.toString().split('')
 
   return (
-    <div ref={ref} className={`flex flex-col ${hasBorder ? 'pl-6 border-l-[3px] border-accent-primary' : ''}`}>
-      <div className="flex items-baseline">
-        <span className="font-display text-[clamp(40px,6vw,64px)] font-bold tracking-tight text-text-primary leading-none">
-          {count}
-        </span>
-        <span className="font-display text-[clamp(40px,6vw,64px)] font-bold tracking-tight text-accent-primary leading-none ml-0.5">
-          {suffix}
-        </span>
+    <div className="flex flex-col relative pl-4 border-l-[3px] border-sage">
+      <div className="font-serif font-bold text-[48px] md:text-[64px] text-bg-navy leading-none flex items-baseline">
+        {stat.prefix}
+        {digits.map((d, i) => (
+          <Digit key={i} value={d} isAnimating={inView} delay={index * 100 + i * 80} />
+        ))}
+        <span className="font-serif font-normal text-[32px] md:text-[40px] text-gold ml-1">{stat.suffix}</span>
       </div>
-      <span className="font-body text-[14px] text-text-secondary mt-2">{label}</span>
+      <div className="font-sans text-[14px] text-text-muted mt-2">{stat.label}</div>
+    </div>
+  )
+}
+
+export default function StatsCounter() {
+  const sectionRef = useRef(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setInView(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.3 })
+    
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={sectionRef} className="w-full bg-bg-alt py-16 safe-paddings">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 justify-between">
+        {stats.map((stat, i) => (
+          <StatItem key={i} stat={stat} index={i} inView={inView} />
+        ))}
+      </div>
     </div>
   )
 }

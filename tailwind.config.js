@@ -8,32 +8,44 @@ export default {
     extend: {
       colors: {
         bg: {
-          primary: 'var(--bg-primary)',
-          secondary: 'var(--bg-secondary)',
-          accent: 'var(--bg-accent)',
+          DEFAULT: 'var(--bg)',
+          alt: 'var(--bg-alt)',
+          card: 'var(--bg-card)',
+          navy: 'var(--bg-navy)',
+          'navy-dark': 'var(--bg-navy-dark)',
         },
         text: {
-          primary: 'var(--text-primary)',
-          secondary: 'var(--text-secondary)',
+          DEFAULT: 'var(--text)',
+          mid: 'var(--text-mid)',
           muted: 'var(--text-muted)',
         },
-        accent: {
-          primary: 'var(--accent-primary)',
-          secondary: 'var(--accent-secondary)',
-          yellow: 'var(--accent-yellow)',
-          lavender: 'var(--accent-lavender)',
+        sage: {
+          DEFAULT: 'var(--sage)',
+          light: 'var(--sage-light)',
+          dark: 'var(--sage-dark)',
         },
-        border: 'var(--border)',
-        'border-strong': 'var(--border-strong)',
+        gold: {
+          DEFAULT: 'var(--gold)',
+          dark: 'var(--gold-dark)',
+        },
+        terra: {
+          DEFAULT: 'var(--terra)',
+          dark: 'var(--terra-dark)',
+        },
+        steel: 'var(--steel)',
+        border: {
+          DEFAULT: 'var(--border)',
+          strong: 'var(--border-strong)',
+        },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        serif: ['"EB Garamond"', 'serif'],
+        sans: ['"DM Sans"', 'sans-serif'],
         mono: ['"Fira Code"', 'monospace'],
       },
       boxShadow: {
-        subtle: '0 4px 12px rgba(28, 25, 23, 0.04)',
-        card: '0 8px 24px rgba(28, 25, 23, 0.06)',
+        warm: '0 4px 12px var(--shadow-warm)',
+        '3d': '0 20px 60px var(--shadow-3d)',
       }
     },
   },
