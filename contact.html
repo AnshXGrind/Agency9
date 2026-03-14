@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Launcify</title>
+  <meta name="description" content="Get in touch with Launcify. Start your AI automation project today.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+
+  <section class="page-hero blueprint-bg">
+    <div class="container">
+      <span class="section-number">04</span>
+      <span class="section-label">Contact</span>
+      <h1 class="section-title">Let's Build <span class="highlight">Something</span></h1>
+    </div>
+  </section>
+
+  <section style="padding:0 0 var(--section-pad)">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div>
+          <form id="contactForm" class="reveal">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-input" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" class="form-input" placeholder="Your company name">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" class="form-select" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="ai-automation">AI Automation</option>
+                <option value="ai-agent">AI Agent</option>
+                <option value="workflow">Workflow Engineering</option>
+                <option value="website">Website Development</option>
+                <option value="full-package">Full Package</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="brief">Project Brief</label>
+              <textarea id="brief" class="form-textarea" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget" class="form-select">
+                <option value="" disabled selected>Select budget range</option>
+                <option value="1k-3k">$1,000 – $3,000</option>
+                <option value="3k-5k">$3,000 – $5,000</option>
+                <option value="5k-10k">$5,000 – $10,000</option>
+                <option value="10k+">$10,000+</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-coral" style="width:100%;justify-content:center">Send It →</button>
+          </form>
+
+          <div id="formSuccess" class="form-success">
+            <div class="checkmark">✓</div>
+            <p>Message received. We'll reply within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info reveal reveal-delay-1">
+          <div class="contact-info-item">
+            <div class="label">Email</div>
+            <a href="mailto:hello@launcify.dev">hello@launcify.dev</a>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Response Time</div>
+            <p style="color:var(--text-primary)">We respond within 24 hours. Always.</p>
+          </div>
+          <div class="contact-info-item">
+            <div class="label">Availability</div>
+            <div class="availability-badge">Currently accepting projects</div>
+          </div>
+
+          <!-- Decorative workflow -->
+          <div style="margin-top:3rem;opacity:0.3">
+            <svg viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:60%">
+              <rect x="60" y="10" width="80" height="30" class="wf-node" rx="6"/>
+              <text x="100" y="30" text-anchor="middle" class="wf-label">Inquiry</text>
+              <line x1="100" y1="40" x2="100" y2="70" class="wf-line"/>
+              <rect x="60" y="70" width="80" height="30" class="wf-node wf-node-coral" rx="6"/>
+              <text x="100" y="90" text-anchor="middle" class="wf-label">Qualify</text>
+              <line x1="100" y1="100" x2="100" y2="130" class="wf-line"/>
+              <rect x="60" y="130" width="80" height="30" class="wf-node" rx="6"/>
+              <text x="100" y="150" text-anchor="middle" class="wf-label">Scope</text>
+              <line x1="100" y1="160" x2="100" y2="190" class="wf-line wf-line-coral"/>
+              <rect x="60" y="190" width="80" height="30" class="wf-node wf-node-blue" rx="6"/>
+              <text x="100" y="210" text-anchor="middle" class="wf-label">Build</text>
+              <line x1="100" y1="220" x2="100" y2="250" class="wf-line"/>
+              <rect x="60" y="250" width="80" height="30" class="wf-node" rx="6"/>
+              <text x="100" y="270" text-anchor="middle" class="wf-label">Launch 🚀</text>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <span class="section-label reveal">FAQ</span>
+      <h2 class="section-title reveal" style="margin-bottom:2rem">Common <span class="highlight">Questions</span></h2>
+
+      <div class="faq-item">
+        <button class="faq-question">What's the typical timeline for a project? <span class="icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Most projects take 1–4 weeks depending on complexity. Simple automations can be done in days. Complex AI agent builds or full-stack websites take 3–6 weeks. We'll give you an exact timeline during our discovery call.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How much does it cost? <span class="icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Projects start at $1,500 for simple automations. AI agents typically range $2,500–$5,000. Full-package engagements (automation + agent + website) start at $5,000. Every project gets a detailed proposal with transparent pricing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What tools do you work with? <span class="icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">n8n, Make, Zapier for workflow automation. LangChain, OpenAI, Anthropic for AI agents. React, Next.js, Node.js for web development. We also work with any API your business uses — CRMs, email tools, databases, and more.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you offer ongoing support? <span class="icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Every project includes 30 days of post-launch support. After that, we offer retainer plans for ongoing maintenance, monitoring, and iteration. Most clients stay because their systems keep growing.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can you work with our existing systems? <span class="icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. We specialize in integrating with existing infrastructure — CRMs, ERPs, legacy databases, third-party APIs. If it has an API (or even if it doesn't), we can connect it.</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bottom-cta blueprint-bg">
+    <div class="container">
+      <h2 class="reveal">Systems Over Hustle.</h2>
+      <p class="reveal">Let <em>Launcify</em> build the automation that scales your business.</p>
+      <a href="contact.html" class="btn-coral reveal">Book a Free Call →</a>
+    </div>
+  </section>
+
+</main>
+<script src="components.js"></script>
+<script>injectComponents('contact');</script>
+<script src="main.js"></script>
+</body>
+</html>
